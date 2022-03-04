@@ -19,6 +19,16 @@ Before you start building out the application, the first step that you should
 take is to draw out your component hierarchy. This will tell you how components
 can pass data to each other as well as where that information should be stored.
 
+App.js
+|
+--Toy Form
+|
+--Toy Container
+map over toy data and render toy cards
+|
+--Toy Card
+display Toy information to DOM
+
 ## Deliverables
 
 - _When our application loads_, make a GET request to `/toys` to fetch the toy
