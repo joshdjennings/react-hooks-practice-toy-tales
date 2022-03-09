@@ -13,7 +13,7 @@ function App() {
 			.then((res) => res.json())
 
 			.then((toys) => setToys(toys));
-	}, [toys]);
+	}, []);
 
 	function handleClick() {
 		setShowForm((showForm) => !showForm);
@@ -23,17 +23,18 @@ function App() {
 		setToys([...toys, newToy]);
 	}
 
-	// function handleDeleteToy(toyToDelete) {
-	// 	const updatedToys = toys.filter((toy) => toy.id !== toyToDelete.id);
-	// 	setToys(updatedToys);
-	// }
+	function handleDeleteToy(toyToDelete) {
+		const updatedToys = toys.filter((toy) => toy.id !== toyToDelete.id);
+		setToys(updatedToys);
+	}
 
-	// function handleUpdateToy(updatedToy) {
-	// 	const updatedToys = toys.map((toy) =>
-	// 		toy.id === updatedToy.id ? updatedToy : toy
-	// 	);
-	// 	setToys(updatedToys);
-	// }
+	function handleUpdateToy(updatedToy) {
+		console.log(updatedToy);
+		const updatedToys = toys.map((toy) =>
+			toy.id === updatedToy.id ? updatedToy : toy
+		);
+		setToys(updatedToys);
+	}
 
 	return (
 		<>
@@ -43,8 +44,8 @@ function App() {
 				<button onClick={handleClick}>Add a Toy</button>
 			</div>
 			<ToyContainer
-				// onUpdateToy={handleUpdateToy}
-				// onDeleteToy={handleDeleteToy}
+				onUpdateToy={handleUpdateToy}
+				onDeleteToy={handleDeleteToy}
 				toys={toys}
 			/>
 		</>

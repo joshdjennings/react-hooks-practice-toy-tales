@@ -14,19 +14,21 @@ function ToyCard({ toy, onDeleteToy, onUpdateToy }) {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(updateObj),
-		});
-		// .then((res) => res.json())
-		// .then(onUpdateToy);
+		})
+			.then((res) => res.json())
+			.then((updatedToy) => {
+				onUpdateToy(updatedToy);
+			});
 	}
 
 	function handleDeleteClick() {
 		fetch(`http://localhost:3001/toys/${id}`, {
 			method: 'DELETE',
-		});
-		// .then((res) => res.json())
-		// .then(() => {
-		// 	onDeleteToy(toy);
-		// });
+		})
+			.then((res) => res.json())
+			.then(() => {
+				onDeleteToy(toy);
+			});
 	}
 
 	return (
